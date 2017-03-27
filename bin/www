@@ -1,0 +1,6 @@
+#!/bin/env node
+const app = require('../app')
+const debug = require('debug')(`${process.env.npm_package_name}:web`)
+
+app.listen(process.env.PORT || 3000)
+debug(`Server listening on port ${process.env.PORT || 3000}`)
