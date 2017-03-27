@@ -1,7 +1,7 @@
 {
   "name": "societies",
   "version": "0.1.0",
-  "description": "A groups and meetings platform.",
+  "description": "A new way to manage groups and meetings.",
   "engineStrict": true,
   "engines": {
     "node": "^7.7.0"
