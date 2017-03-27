@@ -1,15 +1,15 @@
 {
-  "name": "societies.io",
+  "name": "societies",
   "version": "0.1.0",
   "description": "A groups and meetings platform.",
   "engineStrict": true,
   "engines": {
     "node": "^7.7.0"
   },
-  "main": "index.js",
+  "main": "app.js",
   "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "eslint ./"
   },
   "repository": {
     "type": "git",
@@ -28,5 +28,11 @@
   "bugs": {
     "url": "https://github.com/paulodiovani/societies.io/issues"
   },
-  "homepage": "https://github.com/paulodiovani/societies.io#readme"
+  "homepage": "https://github.com/paulodiovani/societies.io#readme",
+  "devDependencies": {
+    "eslint": "^3.18.0",
+    "eslint-config-standard": "^7.1.0",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^2.1.1"
+  }
 }
