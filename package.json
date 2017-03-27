@@ -1,0 +1,32 @@
+{
+  "name": "societies.io",
+  "version": "0.1.0",
+  "description": "A groups and meetings platform.",
+  "engineStrict": true,
+  "engines": {
+    "node": "^7.7.0"
+  },
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paulodiovani/societies.io.git"
+  },
+  "keywords": [
+    "community",
+    "event",
+    "group",
+    "meeting",
+    "meetup",
+    "society"
+  ],
+  "author": "Paulo Diovani <paulo@diovani.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/paulodiovani/societies.io/issues"
+  },
+  "homepage": "https://github.com/paulodiovani/societies.io#readme"
+}
