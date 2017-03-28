@@ -2,9 +2,8 @@
   "name": "societies",
   "version": "0.1.0",
   "description": "A new way to manage groups and meetings.",
-  "engineStrict": true,
   "engines": {
-    "node": "^7.7.0"
+    "node": "^7.7.4"
   },
   "main": "app.js",
   "private": true,
