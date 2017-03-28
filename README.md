@@ -28,7 +28,7 @@ npm test
 
 Check our [contributing](./CONTRIBUTING.md) guidelines to help.
 
-### v1.0.0
+### [v1.0.0-beta](https://github.com/societiesio/societies-api/milestone/1)
 
 - [json:api](http://jsonapi.org/) compliant REST API
 - [Passport](http://passportjs.org/) login
