@@ -33,6 +33,7 @@
   "devDependencies": {
     "ava": "^0.18.2",
     "ava-spec": "^1.1.0",
+    "chai": "^3.5.0",
     "eslint": "^3.18.0",
     "eslint-config-standard": "^7.1.0",
     "eslint-plugin-promise": "^3.5.0",
