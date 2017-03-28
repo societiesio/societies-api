@@ -6,6 +6,21 @@ A new way to manage groups and meetings
 
 > comming soon...
 
+## Getting started
+
+```bash
+cp .env.example .env  # ...and edit ENV vars as necessary
+npm install
+npm start
+```
+
+## Testing
+
+```bash
+npm install
+npm test
+```
+
 ## Roadmap
 
 Check our [contributing](./CONTRIBUTING.md) guidelines to help.

@@ -15,6 +15,6 @@ To contribute, fork the project and create pull requests following:
 
 - Use [editorconfig](http://editorconfig.org/)
 
-- Follow our [eslint](http://eslint.org/) [rules](./.eslintrc.js) (or just use [standardjs](https://standardjs.com/))
+- Follow our [eslint](http://eslint.org/) rules (or just use [standardjs](https://standardjs.com/))
 
 - Write a [good commit message](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)
