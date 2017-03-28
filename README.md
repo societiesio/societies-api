@@ -2,6 +2,8 @@
 
 [![Join the chat at https://gitter.im/societiesio/societies-api](https://badges.gitter.im/societiesio/societies-api.svg)](https://gitter.im/societiesio/societies-api?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Build Status](https://travis-ci.org/societiesio/societies-api.svg?branch=master)](https://travis-ci.org/societiesio/societies-api)
+[![dependencies Status](https://david-dm.org/societiesio/societies-api/status.svg)](https://david-dm.org/societiesio/societies-api)
+[![devDependencies Status](https://david-dm.org/societiesio/societies-api/dev-status.svg)](https://david-dm.org/societiesio/societies-api?type=dev)
 
 A new way to manage groups and meetings
 
