@@ -45,6 +45,13 @@
     "dotenv": "^4.0.0",
     "koa": "^2.2.0"
   },
+  "eslintConfig": {
+    "extends": "standard",
+    "rules": {
+      "max-len": ["warn", { "code": 80 }],
+      "no-confusing-arrow": ["warn", { "allowParens": true }]
+    }
+  },
   "ava": {
     "require": [
       "./test/bootstrap.js"
