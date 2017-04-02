@@ -1,0 +1,8 @@
+#!/bin/env node
+require('dotenv').config({ silent: true })
+require('../models/_connection')
+const repl = require('repl')
+
+global.Society = require('../models/society')
+
+repl.start('repl> ')

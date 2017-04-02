@@ -16,8 +16,10 @@ onerror(app)
 // middlewares
 app.use(bodyparser({ enableTypes: ['json'] }))
 app.use(json())
-app.use(logger())
 app.use(responsetime())
+if (process.env.NODE_ENV !== 'test') {
+  app.use(logger())
+}
 
 // routes
 app.use(index.routes(), index.allowedMethods())

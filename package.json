@@ -9,7 +9,9 @@
   "private": true,
   "scripts": {
     "start": "./bin/www",
+    "dev": "nodemon ./bin/www",
     "debug": "node debug ./bin/www",
+    "console": "./bin/console",
     "test": "eslint ./ && ava"
   },
   "repository": {
@@ -38,6 +40,7 @@
     "eslint-config-standard": "^7.1.0",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^2.1.1",
+    "nodemon": "^1.11.0",
     "supertest": "^3.0.0"
   },
   "dependencies": {
@@ -70,7 +73,7 @@
   },
   "ava": {
     "require": [
-      "./test/bootstrap.js"
+      "./test/support/bootstrap.js"
     ],
     "files": [
       "./test/**/*_spec.js"
