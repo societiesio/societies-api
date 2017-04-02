@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-
 require('dotenv').config({ silent: true })
+require('../models/_connection')
 
 const app = require('../app')
 const debug = require('debug')(`${process.env.npm_package_name}:web`)
