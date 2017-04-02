@@ -1,8 +1,8 @@
 const app = require('../../app')
-const {describe} = require('ava-spec')
 const request = require('supertest')
+const {describe} = require('ava-spec')
 
-describe('Index', () => {
+describe('Index API', () => {
   describe('GET /', it => {
     it('returns a Hello World', async () => {
       await request(app.listen())
