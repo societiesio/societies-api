@@ -3,6 +3,7 @@ const json = require('koa-json')
 const Koa = require('koa')
 const logger = require('koa-logger')
 const onerror = require('koa-onerror')
+const responsetime = require('koa-response-time')
 
 const index = require('./routes/index')
 const users = require('./routes/users')
@@ -16,8 +17,7 @@ onerror(app)
 app.use(bodyparser({ enableTypes: ['json'] }))
 app.use(json())
 app.use(logger())
-app.use(require('./middlewares/time_logger'))
-app.use(require('./middlewares/x_response_time'))
+app.use(responsetime())
 
 // routes
 app.use(index.routes(), index.allowedMethods())
