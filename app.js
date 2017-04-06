@@ -6,6 +6,7 @@ const onerror = require('koa-onerror')
 const responsetime = require('koa-response-time')
 
 const index = require('./routes/index')
+const societies = require('./routes/societies')
 const users = require('./routes/users')
 
 const app = new Koa()
@@ -23,6 +24,7 @@ if (process.env.NODE_ENV !== 'test') {
 
 // routes
 app.use(index.routes(), index.allowedMethods())
+app.use(societies.routes(), societies.allowedMethods())
 app.use(users.routes(), users.allowedMethods())
 
 module.exports = app
