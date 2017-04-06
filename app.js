@@ -1,14 +1,26 @@
-require('dotenv').config({ silent: true })
-const error = require('debug')(`${process.env.npm_package_name}:web:error`)
-
+const bodyparser = require('koa-bodyparser')
+const json = require('koa-json')
 const Koa = require('koa')
+const logger = require('koa-logger')
+const onerror = require('koa-onerror')
+const responsetime = require('koa-response-time')
+
+const index = require('./routes/index')
+const users = require('./routes/users')
+
 const app = new Koa()
 
-app.use(require('./middlewares/logger'))
-app.use(require('./middlewares/response_time'))
+// error handler
+onerror(app)
 
-app.use(require('./routes/index'))
+// middlewares
+app.use(bodyparser({ enableTypes: ['json'] }))
+app.use(json())
+app.use(logger())
+app.use(responsetime())
 
-app.on('error', (err) => error('server error', err))
+// routes
+app.use(index.routes(), index.allowedMethods())
+app.use(users.routes(), users.allowedMethods())
 
 module.exports = app

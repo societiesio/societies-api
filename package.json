@@ -43,13 +43,29 @@
   "dependencies": {
     "debug": "^2.6.3",
     "dotenv": "^4.0.0",
-    "koa": "^2.2.0"
+    "koa": "^2.2.0",
+    "koa-bodyparser": "^4.2.0",
+    "koa-json": "^2.0.2",
+    "koa-logger": "^2.0.1",
+    "koa-onerror": "^3.1.0",
+    "koa-response-time": "^2.0.0",
+    "koa-router": "^7.1.1"
   },
   "eslintConfig": {
     "extends": "standard",
     "rules": {
-      "max-len": ["warn", { "code": 80 }],
-      "no-confusing-arrow": ["warn", { "allowParens": true }]
+      "max-len": [
+        "warn",
+        {
+          "code": 80
+        }
+      ],
+      "no-confusing-arrow": [
+        "warn",
+        {
+          "allowParens": true
+        }
+      ]
     }
   },
   "ava": {
