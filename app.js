@@ -1,4 +1,4 @@
-const bodyparser = require('koa-bodyparser')()
+const bodyparser = require('koa-bodyparser')
 const json = require('koa-json')
 const Koa = require('koa')
 const logger = require('koa-logger')
@@ -13,7 +13,7 @@ const app = new Koa()
 onerror(app)
 
 // middlewares
-app.use(bodyparser)
+app.use(bodyparser({ enableTypes: ['json'] }))
 app.use(json())
 app.use(logger())
 app.use(require('./middlewares/time_logger'))
