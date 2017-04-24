@@ -1,5 +1,5 @@
-// use a different database for each test
-process.env.DATABASE_URL += `-test-${process.pid}`
+// use a different database for test
+process.env.DATABASE_URL += `-test`
 
 const connection = require('../../../models/_connection')
 const {after, afterEach} = require('ava-spec')
