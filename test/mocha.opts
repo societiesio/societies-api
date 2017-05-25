@@ -1,0 +1,3 @@
+--require test/support/bootstrap
+--ui bdd
+test/**/*_spec.js
