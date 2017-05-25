@@ -45,6 +45,7 @@
   "dependencies": {
     "debug": "^2.6.3",
     "dotenv": "^4.0.0",
+    "jsonapi-serializer": "^3.5.3",
     "koa": "^2.2.0",
     "koa-bodyparser": "^4.2.0",
     "koa-json": "^2.0.2",
