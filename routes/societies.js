@@ -1,8 +1,11 @@
 const router = require('koa-router')()
 const Society = require('../models/society')
+const SocietiesSerializer = require('../lib/serializers/societies_serializer')
+const jsonapi = require('../lib/middlewares/jsonapi')
 
 router
   .prefix('/societies')
+  .use(jsonapi(SocietiesSerializer))
   .get('/', index)
   .post('/', create)
   .get('/:id', show)

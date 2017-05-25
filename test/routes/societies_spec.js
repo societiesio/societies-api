@@ -10,43 +10,52 @@ describe('Societies API', () => {
   beforeEach(async () => {
     society = await new Society({
       name: 'Dead Poets Society',
-      summary: 'foo-bar'
+      summary: 'just a good movie'
     }).save()
   })
 
   describe('GET /societies', () => {
-    it('returns all societies', async () => {
-      const response = await get('/societies')
+    let response
+    beforeEach(async () => {
+      response = await get('/societies')
+    })
 
-      expect(response.body).to.have
-        .deep.property('[0].name', 'Dead Poets Society')
+    it('reponds all societies', () => {
+      expect(response.body).to.have.deep.property('data')
+        .that.is.an('array')
+        .that.has.deep.property('[0].attributes.name', 'Dead Poets Society')
+    })
+
+    it('reponds only id, name and summary fields', () => {
+      expect(response.body).to.have.deep.property('data.[0].attributes')
+        .that.have.all.keys('id', 'name', 'summary')
     })
   })
 
   describe('POST /societies', () => {
-    it('creates a new society', async () => {
-      await post('/societies', {
+    let response
+    beforeEach(async() => {
+      response = await post('/societies', {
         name: 'Foo bar',
         summary: 'a new society'
       })
+    })
 
+    it('creates a new society', async () => {
       const count = await Society.count()
       expect(count).to.equal(2)
     })
 
-    it('responds with society data', async () => {
-      const response = await post('/societies', {
-        name: 'Foo bar',
-        summary: 'a new society'
-      })
-
-      expect(response.body).to.include({
-        name: 'Foo bar',
-        summary: 'a new society'
-      })
+    it('responds with a society entity', () => {
+      expect(response.body).to.have.deep.property('data.type', 'societies')
     })
 
-    it('returns 422 when validation fails', async () => {
+    it('responds with society data', () => {
+      expect(response.body).to.have.deep.property('data.attributes')
+        .that.include({ name: 'Foo bar', summary: 'a new society' })
+    })
+
+    it('reponds 422 when validation fails', async () => {
       await post('/societies', {
         summary: 'a new society'
       }, 422)
@@ -54,50 +63,68 @@ describe('Societies API', () => {
   })
 
   describe('GET /societies/:id', () => {
-    it('returns a single society', async () => {
-      const response = await get(`/societies/${society._id}`)
+    let response
+    beforeEach(async () => {
+      response = await get(`/societies/${society._id}`)
+    })
 
-      expect(response.body).to.have.property('name', 'Dead Poets Society')
+    it('reponds a society entity', () => {
+      expect(response.body).to.have.deep.property('data.type', 'societies')
+    })
+
+    it('reponds society data', () => {
+      expect(response.body).to.have.deep.property('data.attributes')
+        .that.contain({
+          name: 'Dead Poets Society',
+          summary: 'just a good movie'
+        })
     })
   })
 
   describe('PATCH /societies/:id', () => {
-    it('updates society values', async () => {
-      await patch(`/societies/${society._id}`, {
+    let response
+    beforeEach(async () => {
+      response = await patch(`/societies/${society._id}`, {
         summary: 'Some group of poets'
       })
+    })
 
+    it('updates society values', async () => {
       const model = await Society.findOne({ _id: society._id })
       expect(model).to.have.property('summary', 'Some group of poets')
     })
 
-    it('responds with updated society data', async () => {
-      const response = await patch(`/societies/${society._id}`, {
-        summary: 'Some group of poets'
-      })
+    it('reponds a society entity', () => {
+      expect(response.body).to.have.deep.property('data.type', 'societies')
+    })
 
-      expect(response.body).to.include({
-        name: 'Dead Poets Society',
-        summary: 'Some group of poets'
-      })
+    it('responds with updated society data', () => {
+      expect(response.body).to.have
+        .deep.property('data.attributes.summary', 'Some group of poets')
     })
   })
 
   describe('DELETE /societies/:id', () => {
-    it('destroy a society', async () => {
-      await del(`/societies/${society._id}`)
+    let response
+    beforeEach(async () => {
+      response = await del(`/societies/${society._id}`)
+    })
 
+    it('destroy a society', async () => {
       const count = await Society.count()
       expect(count).to.equal(0)
     })
 
-    it('responds with deleted society data', async () => {
-      const response = await del(`/societies/${society._id}`)
+    it('reponds a society entity', () => {
+      expect(response.body).to.have.deep.property('data.type', 'societies')
+    })
 
-      expect(response.body).to.include({
-        name: 'Dead Poets Society',
-        summary: 'foo-bar'
-      })
+    it('responds with deleted society data', () => {
+      expect(response.body).to.have.deep.property('data.attributes')
+        .that.contain({
+          name: 'Dead Poets Society',
+          summary: 'just a good movie'
+        })
     })
   })
 })
