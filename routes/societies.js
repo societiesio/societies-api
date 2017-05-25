@@ -17,12 +17,7 @@ async function index (ctx, next) {
 }
 
 async function create (ctx, next) {
-  try {
-    ctx.body = await new Society(ctx.request.body).save()
-  } catch (err) {
-    ctx.status = 422
-    ctx.body = err
-  }
+  ctx.body = await new Society(ctx.request.body).save()
 }
 
 async function show (ctx, next) {

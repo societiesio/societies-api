@@ -36,8 +36,13 @@ describe('Societies API', () => {
     let response
     beforeEach(async() => {
       response = await post('/societies', {
-        name: 'Foo bar',
-        summary: 'a new society'
+        data: {
+          type: 'societies',
+          attributes: {
+            name: 'Foo bar',
+            summary: 'a new society'
+          }
+        }
       })
     })
 
@@ -57,7 +62,12 @@ describe('Societies API', () => {
 
     it('reponds 422 when validation fails', async () => {
       await post('/societies', {
-        summary: 'a new society'
+        data: {
+          type: 'societies',
+          attributes: {
+            summary: 'a new society'
+          }
+        }
       }, 422)
     })
   })
@@ -85,7 +95,13 @@ describe('Societies API', () => {
     let response
     beforeEach(async () => {
       response = await patch(`/societies/${society._id}`, {
-        summary: 'Some group of poets'
+        data: {
+          type: 'societies',
+          id: society._id,
+          attributes: {
+            summary: 'Some group of poets'
+          }
+        }
       })
     })
 
