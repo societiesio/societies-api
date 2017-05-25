@@ -1,8 +1,11 @@
 const router = require('koa-router')()
 const Society = require('../models/society')
+const SocietiesSerializer = require('../lib/serializers/societies_serializer')
+const jsonapi = require('../lib/middlewares/jsonapi')
 
 router
   .prefix('/societies')
+  .use(jsonapi(SocietiesSerializer))
   .get('/', index)
   .post('/', create)
   .get('/:id', show)
@@ -14,12 +17,7 @@ async function index (ctx, next) {
 }
 
 async function create (ctx, next) {
-  try {
-    ctx.body = await new Society(ctx.request.body).save()
-  } catch (err) {
-    ctx.status = 422
-    ctx.body = err
-  }
+  ctx.body = await new Society(ctx.request.body).save()
 }
 
 async function show (ctx, next) {

@@ -43,8 +43,10 @@
     "supertest": "^3.0.0"
   },
   "dependencies": {
+    "bluebird": "^3.5.0",
     "debug": "^2.6.3",
     "dotenv": "^4.0.0",
+    "jsonapi-serializer": "^3.5.3",
     "koa": "^2.2.0",
     "koa-bodyparser": "^4.2.0",
     "koa-json": "^2.0.2",
@@ -52,7 +54,8 @@
     "koa-onerror": "^3.1.0",
     "koa-response-time": "^2.0.0",
     "koa-router": "^7.1.1",
-    "mongoose": "^4.9.2"
+    "mongoose": "^4.9.2",
+    "ramda": "^0.23.0"
   },
   "eslintConfig": {
     "env": {

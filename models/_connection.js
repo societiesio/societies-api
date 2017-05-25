@@ -1,5 +1,4 @@
-const debug = require('debug')(`${process.env.npm_package_name}:database`)
-const error = require('debug')(`${process.env.npm_package_name}:database:error`)
+const { logError, logInfo } = require('../lib/logger')('database')
 const mongoose = require('mongoose')
 
 mongoose.Promise = global.Promise
@@ -7,7 +6,7 @@ mongoose.Promise = global.Promise
 mongoose.connect(process.env.DATABASE_URL)
 const connection = mongoose.connection
 
-connection.on('error', error)
-connection.once('open', () => debug('Database connection established'))
+connection.on('error', logError)
+connection.once('open', () => logInfo('Database connection established'))
 
 module.exports = connection
