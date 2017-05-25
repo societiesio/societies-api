@@ -1,8 +1,6 @@
 const Society = require('../../models/society')
 const {get, post, patch, del} = require('../support/helpers/request')
 const {dbHooks} = require('../support/helpers/database')
-const {describe, beforeEach} = require('ava-spec')
-const {expect} = require('chai')
 
 describe('Societies API', () => {
   let society
@@ -16,8 +14,8 @@ describe('Societies API', () => {
     }).save()
   })
 
-  describe('GET /societies', it => {
-    it.serial('returns all societies', async () => {
+  describe('GET /societies', () => {
+    it('returns all societies', async () => {
       const response = await get('/societies')
 
       expect(response.body).to.have
@@ -25,8 +23,8 @@ describe('Societies API', () => {
     })
   })
 
-  describe('POST /societies', it => {
-    it.serial('creates a new society', async () => {
+  describe('POST /societies', () => {
+    it('creates a new society', async () => {
       await post('/societies', {
         name: 'Foo bar',
         summary: 'a new society'
@@ -36,7 +34,7 @@ describe('Societies API', () => {
       expect(count).to.equal(2)
     })
 
-    it.serial('responds with society data', async () => {
+    it('responds with society data', async () => {
       const response = await post('/societies', {
         name: 'Foo bar',
         summary: 'a new society'
@@ -48,23 +46,23 @@ describe('Societies API', () => {
       })
     })
 
-    it.serial('returns 422 when validation fails', async () => {
+    it('returns 422 when validation fails', async () => {
       await post('/societies', {
         summary: 'a new society'
       }, 422)
     })
   })
 
-  describe('GET /societies/:id', it => {
-    it.serial('returns a single society', async () => {
+  describe('GET /societies/:id', () => {
+    it('returns a single society', async () => {
       const response = await get(`/societies/${society._id}`)
 
       expect(response.body).to.have.property('name', 'Dead Poets Society')
     })
   })
 
-  describe('PATCH /societies/:id', it => {
-    it.serial('updates society values', async () => {
+  describe('PATCH /societies/:id', () => {
+    it('updates society values', async () => {
       await patch(`/societies/${society._id}`, {
         summary: 'Some group of poets'
       })
@@ -73,7 +71,7 @@ describe('Societies API', () => {
       expect(model).to.have.property('summary', 'Some group of poets')
     })
 
-    it.serial('responds with updated society data', async () => {
+    it('responds with updated society data', async () => {
       const response = await patch(`/societies/${society._id}`, {
         summary: 'Some group of poets'
       })
@@ -85,15 +83,15 @@ describe('Societies API', () => {
     })
   })
 
-  describe('DELETE /societies/:id', it => {
-    it.serial('destroy a society', async () => {
+  describe('DELETE /societies/:id', () => {
+    it('destroy a society', async () => {
       await del(`/societies/${society._id}`)
 
       const count = await Society.count()
       expect(count).to.equal(0)
     })
 
-    it.serial('responds with deleted society data', async () => {
+    it('responds with deleted society data', async () => {
       const response = await del(`/societies/${society._id}`)
 
       expect(response.body).to.include({

@@ -1,9 +1,7 @@
 const mongoose = require('mongoose')
 const Society = require('../../models/society')
-const {describe} = require('ava-spec')
-const {expect} = require('chai')
 
-describe('Society', it => {
+describe('Society', () => {
   it('is a Mongoose model', () => {
     expect(new Society()).to.be.instanceof(mongoose.Model)
   })
